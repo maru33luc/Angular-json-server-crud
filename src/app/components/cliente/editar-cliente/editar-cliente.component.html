@@ -1,0 +1,15 @@
+
+<form method="post" id="form-cliente" class="form">
+    <label for="nombre">Nombre</label>
+    <input [(ngModel)]="nombre" type="text" name="nombre" id="nombre" required  >
+
+    <label for="apellido">Apellido</label>
+    <input [(ngModel)]="apellido" type="text" name="apellido" id="apellido" required>
+
+    <label for="dni">DNI</label>
+    <input [(ngModel)]="dni" type="text" name="dni" id="dni" required>
+
+    <label for="fecha">Fecha de inicio</label>
+    <input [(ngModel)]="fechaInicio" type="date" name="fecha" id="fecha" required>
+
+    <input type="submit" value="Enviar" (click)="actualizarCliente()">
