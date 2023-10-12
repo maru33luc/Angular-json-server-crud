@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NuevoClienteComponent {
 
+  leyenda: string = 'Nuevo Cliente';
   constructor(private clienteService: ClienteService, private router: Router) { }
 
   enviarCliente(cliente: any) {
