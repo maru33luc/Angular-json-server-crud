@@ -10,6 +10,7 @@ import { EditarClienteComponent } from './components/cliente/editar-cliente/edit
 import { NuevoClienteComponent } from './components/cliente/nuevo-cliente/nuevo-cliente.component';
 import { NavBarComponent } from './components/cliente/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
+import { HomeClientePageComponent } from './pages/home-cliente-page/home-cliente-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     EditarClienteComponent,
     NuevoClienteComponent,
     NavBarComponent,
+    HomeClientePageComponent,
   ],
   imports: [
     BrowserModule,

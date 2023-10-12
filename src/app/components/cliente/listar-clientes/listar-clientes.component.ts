@@ -38,9 +38,9 @@ export class ListarClientesComponent {
     this.lista = this.lista.filter(cliente => cliente.id !== id);
   }
 
-  async editarCliente(id: number) {
-    console.log(id);
+  // async editarCliente(id: number) {
+  //   console.log(id);
     
-  }
+  // }
 }
 
