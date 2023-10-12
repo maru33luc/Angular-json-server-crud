@@ -11,12 +11,7 @@ export class NuevoClienteComponent {
 
   constructor(private clienteService: ClienteService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
-
   enviarCliente(cliente: any) {
-
-    console.log(cliente);
 
     const agregarCliente = async (cliente: any) => {
       this.clienteService.agregarCliente(cliente);

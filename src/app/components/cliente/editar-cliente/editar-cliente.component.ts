@@ -16,11 +16,10 @@ export class EditarClienteComponent {
   constructor(private router: Router,private route: ActivatedRoute, private clienteService: ClienteService) {
     this.route.params.subscribe(async (params) => {
       const clienteId = params['id'];
-      console.log(clienteId);
 
       try {
         const response = await this.clienteService.getCliente(clienteId);
-        console.log(response);
+        
         if (response) {
           this.nombre = response.nombre;
           this.apellido = response.apellido;
@@ -40,7 +39,6 @@ export class EditarClienteComponent {
       dni: this.dni,
       fechaInicio: this.fechaInicio
     }
-    console.log(cliente);
 
     const editarCliente = async (cliente: any) => {
       this.clienteService.editarCliente(cliente, this.route.snapshot.params['id']);

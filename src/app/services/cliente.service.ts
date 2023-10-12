@@ -57,7 +57,6 @@ async getCliente(id: number) {
 async editarCliente(cliente: any, id: number) {
   try {
       const response = await axios.put(this.url + '/' + id, cliente);
-      console.log(response);
       return response;
   } catch (error) {
       console.log(error);

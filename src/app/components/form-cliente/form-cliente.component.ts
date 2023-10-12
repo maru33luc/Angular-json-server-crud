@@ -1,5 +1,5 @@
-import { Component, SimpleChanges } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core';
+import { Component} from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 interface cliente {
   nombre: string;
@@ -13,6 +13,7 @@ interface cliente {
   templateUrl: './form-cliente.component.html',
   styleUrls: ['./form-cliente.component.css']
 })
+
 export class FormClienteComponent  {
  nombre: string = '';
   apellido: string = '';
@@ -30,7 +31,6 @@ export class FormClienteComponent  {
       dni: this.dni!,
       fechaInicio: this.fechaInicio!
     }
-    console.log('Datos en app-form-cliente:', this.nombre, this.apellido, this.dni, this.fechaInicio);
     this.enviarCliente.emit(cliente);
   }
 }

@@ -26,10 +26,9 @@ export class ListarClientesComponent {
 
   async mostrarClientes() {
     const response = await this.clienteService.getClientes();
-    console.log(response);
     if (response) { 
       this.lista = response as cliente[]; 
-      console.log(this.lista);
+      
     }
   }
 
@@ -38,9 +37,5 @@ export class ListarClientesComponent {
     this.lista = this.lista.filter(cliente => cliente.id !== id);
   }
 
-  // async editarCliente(id: number) {
-  //   console.log(id);
-    
-  // }
 }
 
