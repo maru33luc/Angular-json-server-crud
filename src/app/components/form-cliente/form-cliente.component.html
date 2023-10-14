@@ -1,17 +1,43 @@
 
-<form method="post" id="form-cliente" class="form" (submit)="enviarDatos()">
+<form method="post" id="form-cliente" class="form" (submit)="enviarDatos()" 
+[formGroup]="formularioCliente">
         
     <label for="nombre">Nombre</label>
-    <input [(ngModel)]="nombre" type="text" name="nombre" id="nombre" required>
+    <input type="text" id="nombre" formControlName="nombre">
+    <span class="error" *ngIf="formularioCliente.touched" >
+        {{formularioCliente.controls['nombre'].errors?.['required'] ? 'El nombre es obligatorio' : ''}}
+        {{formularioCliente.controls['nombre'].errors?.['pattern'] ? 'El nombre debe tener solo letras' : ''}}
+    </span>
 
     <label for="apellido">Apellido</label>
-    <input [(ngModel)]="apellido" type="text" name="apellido" id="apellido" required>
+    <input type="text" id="apellido" formControlName="apellido">
+    <span class="error" *ngIf="formularioCliente.controls['nombre'].touched && formularioCliente.controls['apellido'].touched" >
+        {{formularioCliente.controls['apellido'].errors?.['required'] ? 'El apellido es obligatorio' : ''}}
+        {{formularioCliente.controls['apellido'].errors?.['pattern'] ? 'El apellido debe tener solo letras' : ''}}
+    </span>
 
     <label for="dni">DNI</label>
-    <input [(ngModel)]="dni" type="text" name="dni" id="dni" required>
+    <input type="text" id="dni"  formControlName="dni">
+    <span class="error" *ngIf="formularioCliente.controls['nombre'].touched && formularioCliente.controls['apellido'].touched && formularioCliente.controls['dni'].touched" >
+        {{formularioCliente.controls['dni'].errors?.['required'] ? 'El dni es obligatorio' : ''}}
+        {{formularioCliente.controls['dni'].errors?.['pattern'] ? 'El dni debe tener solo numeros' : ''}}
+        {{formularioCliente.controls['dni'].errors?.['minlength'] ? 'El dni debe tener 8 numeros' : ''}}
+        {{formularioCliente.controls['dni'].errors?.['maxlength'] ? 'El dni debe tener 8 numeros' : ''}}
+    </span>
 
     <label for="fecha">Fecha de inicio</label>
-    <input [(ngModel)]="fechaInicio" type="date" name="fecha" id="fecha" required>
+    <input type="date" id="fecha" formControlName="fechaInicio">
+    <span class="error" *ngIf="formularioCliente.controls['nombre'].touched &&
+     formularioCliente.controls['apellido'].touched && 
+     formularioCliente.controls['dni'].touched && 
+     formularioCliente.controls['fechaInicio'].touched ">
+        {{formularioCliente.controls['fechaInicio'].errors?.['required'] ? 'La fecha de inicio es obligatoria' : ''}}
+       
+    </span>
 
+    <span class="error" *ngIf="formularioCliente.controls['nombre'].touched && formularioCliente.controls['apellido'].touched && formularioCliente.controls['dni'].touched && !formularioCliente.controls['fechaInicio'].touched && !formularioCliente.valid">
+        Debe completar la fecha de inicio
+      </span>
     <input type="submit" value="Enviar">
+   
    

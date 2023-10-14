@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
-import { EliminarClienteComponent } from '../eliminar-cliente/eliminar-cliente.component';  
+import { cliente } from 'src/app/interfaces/interface';
 
-
-interface cliente {
-  apellido: string;
-  nombre: string;
-  dni: string;
-  fechaInicio: string;
-  id: number;
-}
 
 @Component({
   selector: 'app-listar-clientes',

@@ -76,6 +76,13 @@
       "dni": "23321234",
       "fechaInicio": "2023-10-10",
       "id": 12
+    },
+    {
+      "nombre": "Natalia",
+      "apellido": "Ramos",
+      "dni": "28842474",
+      "fechaInicio": "2023-10-03",
+      "id": 13
     }
   ]
 }
