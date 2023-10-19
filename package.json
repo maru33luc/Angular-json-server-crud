@@ -2,8 +2,9 @@
   "name": "json-server-crud",
   "version": "0.0.0",
   "scripts": {
+    "json-server": "json-server --watch ./db/clientes.json -p 4000",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

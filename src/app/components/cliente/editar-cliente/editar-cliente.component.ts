@@ -1,3 +1,4 @@
+import { Cliente } from 'src/app/interfaces/interface';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -8,18 +9,19 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./editar-cliente.component.css']
 })
 export class EditarClienteComponent {
+
   nombre: string = '';
   apellido: string = '';
   dni: string = '';
   fechaInicio: string = '';
 
-  constructor(private router: Router,private route: ActivatedRoute, private clienteService: ClienteService) {
+  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService) {
     this.route.params.subscribe(async (params) => {
       const clienteId = params['id'];
 
       try {
         const response = await this.clienteService.getCliente(clienteId);
-        
+
         if (response) {
           this.nombre = response.nombre;
           this.apellido = response.apellido;
@@ -29,17 +31,11 @@ export class EditarClienteComponent {
       } catch (error) {
         console.error('Error al obtener el cliente:', error);
       }
+
     });
   }
 
-  actualizarCliente() {
-    const cliente = {
-      nombre: this.nombre,
-      apellido: this.apellido,
-      dni: this.dni,
-      fechaInicio: this.fechaInicio
-    }
-
+  actualizarCliente(cliente: Cliente) {
     const editarCliente = async (cliente: any) => {
       this.clienteService.editarCliente(cliente, this.route.snapshot.params['id']);
     }
