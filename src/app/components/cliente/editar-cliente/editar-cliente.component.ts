@@ -1,5 +1,5 @@
 import { Cliente } from 'src/app/interfaces/interface';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 
@@ -8,16 +8,19 @@ import { ClienteService } from 'src/app/services/cliente.service';
   templateUrl: './editar-cliente.component.html',
   styleUrls: ['./editar-cliente.component.css']
 })
-export class EditarClienteComponent {
+export class EditarClienteComponent implements OnInit{
 
   nombre: string = '';
   apellido: string = '';
   dni: string = '';
   fechaInicio: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService) {
+  constructor(private router: Router, private route: ActivatedRoute, private clienteService: ClienteService) {}
+
+  ngOnInit(): void {
     this.route.params.subscribe(async (params) => {
       const clienteId = params['id'];
+      console.log(clienteId);
 
       try {
         const response = await this.clienteService.getCliente(clienteId);
@@ -31,15 +34,11 @@ export class EditarClienteComponent {
       } catch (error) {
         console.error('Error al obtener el cliente:', error);
       }
-
     });
   }
 
-  actualizarCliente(cliente: Cliente) {
-    const editarCliente = async (cliente: any) => {
-      this.clienteService.editarCliente(cliente, this.route.snapshot.params['id']);
-    }
-    editarCliente(cliente);
+  actualizarCliente(cliente: Cliente): void {
+    this.clienteService.editarCliente(cliente, this.route.snapshot.params['id']);
     this.router.navigate(['/'])
   }
 }

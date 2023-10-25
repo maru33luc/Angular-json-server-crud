@@ -1,4 +1,3 @@
-import { ListarClientesComponent } from './components/cliente/listar-clientes/listar-clientes.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeClientePageComponent } from './pages/home-cliente-page/home-cliente-page.component';

@@ -19,7 +19,7 @@ export class FormClienteComponent {
   formularioCliente: FormGroup = this.formBuilder.group({
 
     nombre: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-    apellido: ['d', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    apellido: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     dni: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(8), Validators.maxLength(8)]],
     fechaInicio: ['', Validators.required]
   });
@@ -38,11 +38,11 @@ export class FormClienteComponent {
   }
 
   enviarDatos() {
-
     if (this.formularioCliente.invalid) {
       alert('Debe completar todos los campos');
       return;
     } else {
+
       const cliente: Cliente = {
         nombre: this.formularioCliente.controls['nombre'].value,
         apellido: this.formularioCliente.controls['apellido'].value,

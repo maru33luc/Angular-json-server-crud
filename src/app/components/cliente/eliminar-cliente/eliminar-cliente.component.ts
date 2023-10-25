@@ -8,18 +8,9 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class EliminarClienteComponent {
 
+  constructor(private clienteService: ClienteService) { }
 
-  constructor(private clienteService: ClienteService) { 
-  
+  async eliminarCliente(id: number): Promise<void> {
+    this.clienteService.eliminarCliente(id);
   }
-    async eliminarCliente(id: number) {
-      const response = await this.clienteService.eliminarCliente(id);
-      console.log(response);
-      if (response) {
-        alert('Cliente eliminado');
-      }
-    }
-
-  
-
 }

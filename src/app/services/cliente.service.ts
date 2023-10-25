@@ -18,20 +18,29 @@ export class ClienteService {
       return listado.data;
     } catch (error) {
       console.log(error);
-
     } return undefined;
   }
 
-  async eliminarCliente(id: number): Promise<any> {
+  async eliminarCliente(id: number): Promise<void>  {
     try {
-      const response = await axios.delete(this.url + '/' + id);
-      console.log(response);
-      return response;
+      await axios.delete(this.url + '/' + id);
     } catch (error) {
       alert(error);
-      return error;
     }
   }
+
+  // async eliminarCliente (id:number){
+  //   try {
+  //     const response = await fetch(this.url + '/' + id, {
+  //       method: 'DELETE',
+  //     });
+  //     return response;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return error;
+  //   }
+  // }
+
 
   async agregarCliente(cliente: Cliente): Promise<any> {
     // try {
@@ -69,16 +78,30 @@ export class ClienteService {
     }
   }
 
-  async editarCliente(cliente: Cliente, id: number) {
+  // async editarCliente(cliente: Cliente, id: number) {
+  //   try {
+  //     const response = await axios.put(this.url + '/' + id, cliente);
+  //     return response;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return error;
+  //   }
+  // }
+
+  async editarCliente (cliente: Cliente, id: number) {
     try {
-      const response = await axios.put(this.url + '/' + id, cliente);
+      const response = await fetch(this.url + '/' + id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cliente)
+      });
       return response;
     } catch (error) {
       console.log(error);
       return error;
     }
   }
-
-
 
 }

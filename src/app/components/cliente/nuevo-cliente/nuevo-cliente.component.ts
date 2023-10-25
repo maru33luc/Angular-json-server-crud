@@ -14,13 +14,8 @@ export class NuevoClienteComponent {
   constructor(private clienteService: ClienteService, private router: Router) { }
 
   enviarCliente(cliente: Cliente) {
-
-    const agregarCliente = async (cliente: any) => {
-      this.clienteService.agregarCliente(cliente);
-    }
-    agregarCliente(cliente);
+    this.clienteService.agregarCliente(cliente);
     this.router.navigate(['/'])
   }
-
 }
 
